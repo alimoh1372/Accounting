@@ -55,6 +55,7 @@
             btnNewCustomer.Size = new System.Drawing.Size(74, 58);
             btnNewCustomer.Text = "شخص جدید";
             btnNewCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            btnNewCustomer.Click += new System.EventHandler(this.btnNewCustomer_Click);
             // 
             // toolStrip1
             // 
@@ -82,6 +83,7 @@
             this.btnEditCustomer.Size = new System.Drawing.Size(91, 58);
             this.btnEditCustomer.Text = "ویرایش اطلاعات";
             this.btnEditCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnEditCustomer.Click += new System.EventHandler(this.btnEditCustomer_Click);
             // 
             // btnDeleteCustomer
             // 
@@ -93,6 +95,7 @@
             this.btnDeleteCustomer.Size = new System.Drawing.Size(74, 58);
             this.btnDeleteCustomer.Text = "حذف شخص";
             this.btnDeleteCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDeleteCustomer.Click += new System.EventHandler(this.btnDeleteCustomer_Click);
             // 
             // btnRefreshCustomers
             // 

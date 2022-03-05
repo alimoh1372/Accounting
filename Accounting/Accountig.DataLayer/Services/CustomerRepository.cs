@@ -13,13 +13,13 @@ namespace Accountig.DataLayer.Services
         private Accountig_DBEntities db;
         public CustomerRepository(Accountig_DBEntities contex)
         {
-            db =contex;
+            db = contex;
         }
         public bool DeleteCustomer(int customerId)
         {
             try
             {
-                Customers customerTodelete= GetCustomerById(customerId);
+                Customers customerTodelete = GetCustomerById(customerId);
                 DeleteCustomer(customerTodelete);
                 return true;
             }
@@ -65,28 +65,31 @@ namespace Accountig.DataLayer.Services
                 db.Customers.Add(customer);
                 return true;
             }
-            catch 
-            {
-                return false;
-            }
-        }
-
-        public void Save()
-        {
-            db.SaveChanges();
-        }
-
-        public bool UpdateCustomer(Customers customer)
-        {
-            try
-            {
-                db.Entry(customer).State = EntityState.Modified;
-                return true;
-            }
             catch
             {
                 return false;
             }
+        }
+
+
+        public bool UpdateCustomer(Customers customer)
+        {
+            //try
+            //{
+                var local = db.Set<Customers>()
+                .Local
+                .FirstOrDefault(c => c.CustomerID == customer.CustomerID);
+                if (local != null)
+                {
+                    db.Entry(local).State = EntityState.Detached;
+                }
+                db.Entry(customer).State = EntityState.Modified;
+               return true;
+            //}
+            //catch
+            //{
+            //    return false;
+            //}
         }
     }
 }

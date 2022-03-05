@@ -27,6 +27,10 @@ namespace Accountig.DataLayer.Context
             }
             
         }
+        public int Save()
+        {
+          return  db.SaveChanges();
+        }
         public void Dispose()
         {
             db.Dispose();
