@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Accountig.DataLayer.Repositories
 {
-   public interface ICustomerRepository
+    public interface ICustomerRepository
     {
-       
-       List<Customers> GetAllCustomers();
+
+        List<Customers> GetAllCustomers();
         Customers GetCustomerById(int customerId);
+        IEnumerable<Customers> GetCustomerByFilter(string filterText);
         bool InsertCustomer(Customers customer);
         bool UpdateCustomer(Customers customer);
         bool DeleteCustomer(Customers customer);

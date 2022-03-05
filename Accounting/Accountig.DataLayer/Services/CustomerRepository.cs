@@ -47,6 +47,12 @@ namespace Accountig.DataLayer.Services
             return db.Customers.ToList();
         }
 
+        public IEnumerable<Customers> GetCustomerByFilter(string filterText)
+        {
+            return db.Customers.Where(p => p.FullName.Contains(filterText) || p.Email.Contains(filterText) || p.Mobile.Contains(filterText)).ToList();
+
+        }
+
         public Customers GetCustomerById(int customerId)
         {
             return db.Customers.Find(customerId);
