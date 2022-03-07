@@ -40,10 +40,30 @@ namespace Accounting.App
 
             if (BaseValidator.IsFormValid(this.components))
             {
-                Customers oldCustomer = db.customRepository.GetCustomerById(customerId);
-                string imgOldName = oldCustomer.CustomerImage;
-                string imageName = Guid.NewGuid().ToString() + Path.GetExtension(pcCustomer.ImageLocation);
+                string imageName="NoPhoto";
+                string imgOldName="";
                 string savePath = Application.StartupPath + "/Images/";
+                if (customerId!=0)
+                {
+                    Customers oldCustomer = db.customRepository.GetCustomerById(customerId);
+                     imgOldName = oldCustomer.CustomerImage;
+                    if (!pcCustomer.ImageLocation.Contains($"{Application.StartupPath}"))
+                    {
+                        imageName = Guid.NewGuid().ToString() + Path.GetExtension(pcCustomer.ImageLocation);
+                    }
+                    else
+                    {
+                        imageName = imgOldName;
+                    }
+
+                }
+                else
+                {
+                    
+                    imageName = Guid.NewGuid().ToString() + Path.GetExtension(pcCustomer.ImageLocation);
+                    
+                }
+
                 Customers customer = new Customers()
                 {
                     FullName = txtName.Text,
@@ -70,7 +90,11 @@ namespace Accounting.App
                         Directory.CreateDirectory(savePath);
                     }
                 }
-                pcCustomer.Image.Save(savePath + imageName);
+                if (imgOldName!=imageName)
+                {
+                    pcCustomer.Image.Save(savePath + imageName);
+                }
+                
                 DialogResult = DialogResult.OK;
             }
             else
