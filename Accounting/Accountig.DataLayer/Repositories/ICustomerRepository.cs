@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Accountig.ViewModels;
 
 namespace Accountig.DataLayer.Repositories
 {
@@ -17,6 +18,10 @@ namespace Accountig.DataLayer.Repositories
         bool DeleteCustomer(Customers customer);
 
         bool DeleteCustomer(int customerId);
+
+
+        List<customerSelectViewModel> GetSelectCustomer(string filterText = "");
+        
        
     }
 }

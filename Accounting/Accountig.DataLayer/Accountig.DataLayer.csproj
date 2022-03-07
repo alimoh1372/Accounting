@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Accountig.ViewModels">
+      <HintPath>..\ViewModels\bin\Debug\Accountig.ViewModels.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -66,6 +69,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AccountigModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Accounting.cs">
+      <DependentUpon>AccountigModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AccountingTypes.cs">
+      <DependentUpon>AccountigModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\UnitOfWorkPattern.cs" />
     <Compile Include="Customers.cs">
       <DependentUpon>AccountigModel.tt</DependentUpon>
@@ -73,6 +82,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ICustomerRepository.cs" />
     <Compile Include="Services\CustomerRepository.cs" />
+    <Compile Include="Services\GenricRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="AccountigModel.edmx">

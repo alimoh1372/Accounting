@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Accountig.DataLayer.Repositories;
 using System.Data.Entity;
+using Accountig.ViewModels;
 
 namespace Accountig.DataLayer.Services
 {
@@ -58,6 +59,23 @@ namespace Accountig.DataLayer.Services
             return db.Customers.Find(customerId);
         }
 
+        public List<customerSelectViewModel> GetSelectCustomer(string filterText = "")
+        {
+            if (filterText != "")
+            {
+                return db.Customers.Where(c => c.FullName.Contains(filterText)).Select(c => new customerSelectViewModel
+                {
+                    CustomerId = c.CustomerID,
+                    FullName = c.FullName
+                }).ToList();
+            }
+            return db.Customers.Select(c => new customerSelectViewModel
+            {
+                CustomerId = c.CustomerID,
+                FullName = c.FullName
+            }).ToList();
+        }
+
         public bool InsertCustomer(Customers customer)
         {
             try
@@ -76,15 +94,15 @@ namespace Accountig.DataLayer.Services
         {
             //try
             //{
-                var local = db.Set<Customers>()
-                .Local
-                .FirstOrDefault(c => c.CustomerID == customer.CustomerID);
-                if (local != null)
-                {
-                    db.Entry(local).State = EntityState.Detached;
-                }
-                db.Entry(customer).State = EntityState.Modified;
-               return true;
+            var local = db.Set<Customers>()
+            .Local
+            .FirstOrDefault(c => c.CustomerID == customer.CustomerID);
+            if (local != null)
+            {
+                db.Entry(local).State = EntityState.Detached;
+            }
+            db.Entry(customer).State = EntityState.Modified;
+            return true;
             //}
             //catch
             //{

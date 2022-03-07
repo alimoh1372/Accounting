@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Accountig.DataLayer.Repositories;
 using Accountig.DataLayer.Services;
+using Accountig.DataLayer.Context;
 
 
 namespace Accountig.DataLayer.Context
@@ -14,6 +15,7 @@ namespace Accountig.DataLayer.Context
         private Accountig_DBEntities db=new Accountig_DBEntities();
 
         private ICustomerRepository _customRepository;
+        private GenricRepository<Accounting> _accountigRepository;
 
         public ICustomerRepository customRepository
         {
@@ -26,6 +28,18 @@ namespace Accountig.DataLayer.Context
                 return _customRepository; 
             }
             
+        }
+
+        public GenricRepository<Accounting> AccountigRepository
+        {
+            get
+            {
+                if (_accountigRepository==null)
+                {
+                    return new GenricRepository<Accounting>(db);
+                }
+                return _accountigRepository;
+            }
         }
         public int Save()
         {
