@@ -59,6 +59,11 @@ namespace Accountig.DataLayer.Services
             return db.Customers.Find(customerId);
         }
 
+        public int GetCustomerIdByName(string fullName)
+        {
+           return db.Customers.First(c => c.FullName.Contains(fullName)).CustomerID;
+        }
+
         public List<customerSelectViewModel> GetSelectCustomer(string filterText = "")
         {
             if (filterText != "")

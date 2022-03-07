@@ -74,10 +74,10 @@
     <Compile Include="Customers\frmCustomers.Designer.cs">
       <DependentUpon>frmCustomers.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmNewAccountig.cs">
+    <Compile Include="AccountingFolder\frmNewAccountig.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNewAccountig.designer.cs">
+    <Compile Include="AccountingFolder\frmNewAccountig.designer.cs">
       <DependentUpon>frmNewAccountig.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -121,7 +121,7 @@
     <EmbeddedResource Include="Customers\frmCustomers.resx">
       <DependentUpon>frmCustomers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNewAccountig.resx">
+    <EmbeddedResource Include="AccountingFolder\frmNewAccountig.resx">
       <DependentUpon>frmNewAccountig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

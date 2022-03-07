@@ -36,7 +36,8 @@ namespace Accountig.DataLayer.Context
             {
                 if (_accountigRepository==null)
                 {
-                    return new GenricRepository<Accounting>(db);
+                    _accountigRepository = new GenricRepository<Accounting>(db);
+                    return _accountigRepository;
                 }
                 return _accountigRepository;
             }
