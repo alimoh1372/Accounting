@@ -13,7 +13,7 @@ namespace Accounting.Utility
         {
             
             PersianCalendar pc = new PersianCalendar();
-            string ShamsiDate = string.Format("0000", pc.GetYear(MiladiDateTime)) + "/" + string.Format("00", pc.GetMonth(MiladiDateTime)) + "/" + string.Format("00", pc.GetDayOfMonth(MiladiDateTime));
+            string ShamsiDate = pc.GetYear(MiladiDateTime)+"/"+pc.GetMonth(MiladiDateTime).ToString("00")+"/"+pc.GetDayOfMonth(MiladiDateTime).ToString("00");
             return ShamsiDate;
         }
         public static string DeleteSomecharFromString(this string text, char deleteChar)

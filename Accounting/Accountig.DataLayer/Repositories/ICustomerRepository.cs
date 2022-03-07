@@ -23,6 +23,7 @@ namespace Accountig.DataLayer.Repositories
         List<customerSelectViewModel> GetSelectCustomer(string filterText = "");
 
         int GetCustomerIdByName(string fullName);
+        string GetCustomerNameById(int customerId);
         
        
     }
