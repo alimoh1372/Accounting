@@ -4,10 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-
-
-
 namespace Accountig.DataLayer.Repositories
 {
     public interface ICustomerRepository
@@ -21,11 +17,6 @@ namespace Accountig.DataLayer.Repositories
         bool DeleteCustomer(Customers customer);
 
         bool DeleteCustomer(int customerId);
-
-
-
-
-
-
+       
     }
 }

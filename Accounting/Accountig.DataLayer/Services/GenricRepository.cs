@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Accountig.DataLayer.Services
 {
-    public class GenricRepository<TEntity> where TEntity : class
+    class GenricRepository<TEntity> where TEntity : class
     {
         private Accountig_DBEntities _db;
 

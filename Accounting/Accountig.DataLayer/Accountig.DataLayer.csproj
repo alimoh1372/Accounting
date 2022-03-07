@@ -66,12 +66,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AccountigModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Accounting.cs">
-      <DependentUpon>AccountigModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AccountingTypes.cs">
-      <DependentUpon>AccountigModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Context\UnitOfWorkPattern.cs" />
     <Compile Include="Customers.cs">
       <DependentUpon>AccountigModel.tt</DependentUpon>
@@ -110,12 +104,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ViewModels\Accounting.ViewModels.csproj">
-      <Project>{b9f38f32-9c5e-4485-bb86-d5b062ccf72b}</Project>
-      <Name>Accounting.ViewModels</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
