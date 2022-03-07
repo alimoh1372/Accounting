@@ -22,5 +22,16 @@ namespace Accounting.App
             frmCustomers frmcustomer = new frmCustomers();
             frmcustomer.ShowDialog();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNewAccounting_Click(object sender, EventArgs e)
+        {
+            frmNewAccountig frmNewAccountig = new frmNewAccountig();
+            frmNewAccountig.ShowDialog();
+        }
     }
 }
