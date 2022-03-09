@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounting.App", "Accounting.App\Accounting.App.csproj", "{E3DB435F-5DF5-4B2E-92E2-66D5939CCA93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accountig.DataLayer", "Accountig.DataLayer\Accountig.DataLayer.csproj", "{AE784DB9-9800-4E21-97F4-9905F0D03D00}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounting.DataLayer", "Accountig.DataLayer\Accounting.DataLayer.csproj", "{AE784DB9-9800-4E21-97F4-9905F0D03D00}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounting.ViewModels", "ViewModels\Accounting.ViewModels.csproj", "{B9F38F32-9C5E-4485-BB86-D5B062CCF72B}"
 EndProject

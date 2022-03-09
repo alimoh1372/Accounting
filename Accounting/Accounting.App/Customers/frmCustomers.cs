@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Accountig.DataLayer.Context;
-using Accountig.DataLayer;
+using Accounting.DataLayer.Context;
+using Accounting.DataLayer;
 using System.IO;
 
 namespace Accounting.App

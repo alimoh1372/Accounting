@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Accountig.DataLayer.Services
+namespace Accounting.DataLayer.Services
 {
     public class GenricRepository<TEntity> where TEntity : class
     {

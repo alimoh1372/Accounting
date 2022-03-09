@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Accountig.ViewModels;
 
-namespace Accountig.DataLayer.Repositories
+namespace Accounting.DataLayer.Repositories
 {
     public interface ICustomerRepository
     {

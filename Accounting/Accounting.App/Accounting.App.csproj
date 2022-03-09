@@ -211,9 +211,9 @@
     <None Include="Resources\Users.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Accountig.DataLayer\Accountig.DataLayer.csproj">
+    <ProjectReference Include="..\Accountig.DataLayer\Accounting.DataLayer.csproj">
       <Project>{ae784db9-9800-4e21-97f4-9905f0d03d00}</Project>
-      <Name>Accountig.DataLayer</Name>
+      <Name>Accounting.DataLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\Accounting.Utility\Accounting.Utility.csproj">
       <Project>{bcf386bb-0d1e-4881-a362-abf876267da1}</Project>

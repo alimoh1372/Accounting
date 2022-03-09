@@ -7,8 +7,8 @@
     <ProjectGuid>{B9F38F32-9C5E-4485-BB86-D5B062CCF72B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Accountig.ViewModels</RootNamespace>
-    <AssemblyName>Accountig.ViewModels</AssemblyName>
+    <RootNamespace>Accounting.ViewModels</RootNamespace>
+    <AssemblyName>Accounting.ViewModels</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

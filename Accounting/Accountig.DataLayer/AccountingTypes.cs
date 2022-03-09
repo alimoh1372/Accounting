@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Accountig.DataLayer
+namespace Accounting.DataLayer
 {
     using System;
     using System.Collections.Generic;

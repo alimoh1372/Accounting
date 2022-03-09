@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ValidationComponents;
-using Accountig.DataLayer;
-using Accountig.DataLayer.Context;
-using Accountig.DataLayer.Services;
+using Accounting.DataLayer;
+using Accounting.DataLayer.Context;
+using Accounting.DataLayer.Services;
 using System.IO;
 
 namespace Accounting.App

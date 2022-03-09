@@ -1,4 +1,4 @@
-﻿using Accountig.DataLayer.Context;
+﻿using Accounting.DataLayer.Context;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,12 +14,15 @@ using Accounting.Utility;
 
 
 
+
+
+
 namespace Accounting.App
 {
     public partial class frmNewAccountig : Form
     {
         UnitOfWorkPattern db = new UnitOfWorkPattern();
-
+        public int accountigId = 0;
         public frmNewAccountig()
         {
             InitializeComponent();
@@ -28,6 +31,21 @@ namespace Accounting.App
         private void frmNewAccountig_Load(object sender, EventArgs e)
         {
             BindGridSelect();
+            if (accountigId==0)
+            {
+                this.Text = "تراکنش جدید";
+                this.btnSaveTransaction.Text = "ثبت تراکنش";
+            }
+            else
+            {
+                this.Text = "ویرایش تراکنش";
+                this.btnSaveTransaction.Text = "ثبت ویرایش";
+                DataLayer.Accounting accounting1 = new DataLayer.Accounting();
+                accounting1 = db.AccountigRepository.GetById(accountigId);
+
+                
+
+            }
 
         }
 
@@ -49,11 +67,12 @@ namespace Accounting.App
 
         private void btnSaveTransaction_Click(object sender, EventArgs e)
         {
+            
             if (BaseValidator.IsFormValid(this.components))
             {
                 if (rdPay.Checked || rdRecieve.Checked)
                 {
-                    Accountig.DataLayer.Accounting accounting = new Accountig.DataLayer.Accounting()
+                   DataLayer.Accounting accounting = new DataLayer.Accounting()
                     {
                         TypeID = (rdRecieve.Checked) ? 1 : 2,
                         Amount = Convert.ToInt32(txtAmount.Text.DeleteSomecharFromString(',')),
@@ -61,9 +80,22 @@ namespace Accounting.App
                         DateTitle = DateTime.Now,
                         Description=txtDescrepcion.Text
                     };
-
-                    db.AccountigRepository.Insert(accounting);
-                    int result= db.Save();
+                    int result;
+                    string title = "";
+                    if (accountigId==0)
+                    {
+                        db.AccountigRepository.Insert(accounting);
+                        result = db.Save();
+                        title = "خطا هنگام ثبت";
+                    }
+                    else
+                    {
+                        accounting.ID = accountigId;
+                        db.AccountigRepository.Update(accounting);
+                        result=db.Save();
+                        title = "خطا هنگام ویرایش";
+                    }
+                    
                     if (result>0)
                     {
                         DialogResult = DialogResult.OK;
@@ -71,7 +103,7 @@ namespace Accounting.App
                     else
                     {
 
-                        RtlMessageBox.Show("در هنگام ثبت تراکنش مشکلی بوجود آمده است لطفا بعدا انتخاب نمائید.یا با ادمین تماس حاصل فرمائید..باتشکر ", "خطا هنگام ثبت", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        RtlMessageBox.Show("در هنگام انجام عملیات  مشکلی بوجود آمده است لطفا بعدا مجددا انجام، یا با ادمین تماس حاصل فرمائید..باتشکر ", title, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else

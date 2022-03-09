@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnPrint = new System.Windows.Forms.ToolStripButton();
-            this.btnRefreshReport = new System.Windows.Forms.ToolStripButton();
-            this.btnDeleteAccountig = new System.Windows.Forms.ToolStripButton();
-            this.btnEditAccountig = new System.Windows.Forms.ToolStripButton();
-            this.cbCustomer = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtFromDate = new System.Windows.Forms.MaskedTextBox();
+            this.btnFilter = new System.Windows.Forms.Button();
             this.txtToDate = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnFilter = new System.Windows.Forms.Button();
+            this.txtFromDate = new System.Windows.Forms.MaskedTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbCustomer = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnEditAccountig = new System.Windows.Forms.ToolStripButton();
+            this.btnDeleteAccountig = new System.Windows.Forms.ToolStripButton();
+            this.btnRefreshReport = new System.Windows.Forms.ToolStripButton();
+            this.btnPrint = new System.Windows.Forms.ToolStripButton();
             this.dgvAccountingReport = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CostomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,6 +68,64 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "جست و جو";
             // 
+            // btnFilter
+            // 
+            this.btnFilter.Location = new System.Drawing.Point(33, 13);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(75, 55);
+            this.btnFilter.TabIndex = 6;
+            this.btnFilter.Text = "انجام";
+            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
+            // 
+            // txtToDate
+            // 
+            this.txtToDate.Location = new System.Drawing.Point(127, 26);
+            this.txtToDate.Mask = "0000/00/00";
+            this.txtToDate.Name = "txtToDate";
+            this.txtToDate.PromptChar = '-';
+            this.txtToDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtToDate.Size = new System.Drawing.Size(100, 27);
+            this.txtToDate.TabIndex = 5;
+            this.txtToDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(233, 29);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 19);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "از تاریخ :";
+            // 
+            // txtFromDate
+            // 
+            this.txtFromDate.Location = new System.Drawing.Point(305, 26);
+            this.txtFromDate.Mask = "0000/00/00";
+            this.txtFromDate.Name = "txtFromDate";
+            this.txtFromDate.PromptChar = '-';
+            this.txtFromDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtFromDate.Size = new System.Drawing.Size(100, 27);
+            this.txtFromDate.TabIndex = 3;
+            this.txtFromDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(411, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 19);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "از تاریخ :";
+            // 
+            // cbCustomer
+            // 
+            this.cbCustomer.FormattingEnabled = true;
+            this.cbCustomer.Location = new System.Drawing.Point(482, 26);
+            this.cbCustomer.Name = "cbCustomer";
+            this.cbCustomer.Size = new System.Drawing.Size(121, 27);
+            this.cbCustomer.TabIndex = 1;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -90,25 +148,16 @@
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // btnPrint
+            // btnEditAccountig
             // 
-            this.btnPrint.Image = global::Accounting.App.Properties.Resources._1371476276_Print;
-            this.btnPrint.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(44, 59);
-            this.btnPrint.Text = "چاپ";
-            this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // btnRefreshReport
-            // 
-            this.btnRefreshReport.Image = global::Accounting.App.Properties.Resources._1371476342_Refresh;
-            this.btnRefreshReport.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnRefreshReport.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnRefreshReport.Name = "btnRefreshReport";
-            this.btnRefreshReport.Size = new System.Drawing.Size(60, 59);
-            this.btnRefreshReport.Text = "بروزرسانی";
-            this.btnRefreshReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnEditAccountig.Image = global::Accounting.App.Properties.Resources._1371475930_filenew;
+            this.btnEditAccountig.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnEditAccountig.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEditAccountig.Name = "btnEditAccountig";
+            this.btnEditAccountig.Size = new System.Drawing.Size(46, 59);
+            this.btnEditAccountig.Text = " ویراش";
+            this.btnEditAccountig.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnEditAccountig.Click += new System.EventHandler(this.btnEditAccountig_Click);
             // 
             // btnDeleteAccountig
             // 
@@ -121,73 +170,25 @@
             this.btnDeleteAccountig.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDeleteAccountig.Click += new System.EventHandler(this.btnDeleteAccountig_Click);
             // 
-            // btnEditAccountig
+            // btnRefreshReport
             // 
-            this.btnEditAccountig.Image = global::Accounting.App.Properties.Resources._1371475930_filenew;
-            this.btnEditAccountig.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnEditAccountig.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEditAccountig.Name = "btnEditAccountig";
-            this.btnEditAccountig.Size = new System.Drawing.Size(46, 59);
-            this.btnEditAccountig.Text = " ویراش";
-            this.btnEditAccountig.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnRefreshReport.Image = global::Accounting.App.Properties.Resources._1371476342_Refresh;
+            this.btnRefreshReport.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnRefreshReport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRefreshReport.Name = "btnRefreshReport";
+            this.btnRefreshReport.Size = new System.Drawing.Size(60, 59);
+            this.btnRefreshReport.Text = "بروزرسانی";
+            this.btnRefreshReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // cbCustomer
+            // btnPrint
             // 
-            this.cbCustomer.FormattingEnabled = true;
-            this.cbCustomer.Location = new System.Drawing.Point(482, 26);
-            this.cbCustomer.Name = "cbCustomer";
-            this.cbCustomer.Size = new System.Drawing.Size(121, 27);
-            this.cbCustomer.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(411, 29);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 19);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "از تاریخ :";
-            // 
-            // txtFromDate
-            // 
-            this.txtFromDate.Location = new System.Drawing.Point(305, 26);
-            this.txtFromDate.Mask = "0000/00/00";
-            this.txtFromDate.Name = "txtFromDate";
-            this.txtFromDate.PromptChar = '-';
-            this.txtFromDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtFromDate.Size = new System.Drawing.Size(100, 27);
-            this.txtFromDate.TabIndex = 3;
-            this.txtFromDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtToDate
-            // 
-            this.txtToDate.Location = new System.Drawing.Point(127, 26);
-            this.txtToDate.Mask = "0000/00/00";
-            this.txtToDate.Name = "txtToDate";
-            this.txtToDate.PromptChar = '-';
-            this.txtToDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtToDate.Size = new System.Drawing.Size(100, 27);
-            this.txtToDate.TabIndex = 5;
-            this.txtToDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(233, 29);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 19);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "از تاریخ :";
-            // 
-            // btnFilter
-            // 
-            this.btnFilter.Location = new System.Drawing.Point(33, 13);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(75, 55);
-            this.btnFilter.TabIndex = 6;
-            this.btnFilter.Text = "انجام";
-            this.btnFilter.UseVisualStyleBackColor = true;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
+            this.btnPrint.Image = global::Accounting.App.Properties.Resources._1371476276_Print;
+            this.btnPrint.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(44, 59);
+            this.btnPrint.Text = "چاپ";
+            this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // dgvAccountingReport
             // 
@@ -253,7 +254,7 @@
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmRecivePayReport";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

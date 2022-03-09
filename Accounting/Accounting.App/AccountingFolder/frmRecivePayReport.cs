@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Accountig.DataLayer.Context;
-using Accountig.DataLayer;
+using Accounting.DataLayer;
 using Accounting.Utility;
+using Accounting.DataLayer.Context;
 
 namespace Accounting.App
 {
@@ -47,7 +47,7 @@ namespace Accounting.App
                 // dgvAccountingReport.AutoGenerateColumns = false;
                 //dgvAccountingReport.DataSource = result;
                 dgvAccountingReport.Rows.Clear();
-                foreach (Accountig.DataLayer.Accounting accountigItem in result)
+                foreach (DataLayer.Accounting accountigItem in result)
                 {
                     string customerName = db.customRepository.GetCustomerNameById(accountigItem.CostomerID);
                     dgvAccountingReport.Rows.Add(accountigItem.ID.ToString(), customerName, accountigItem.Amount.ToString("#,0"), accountigItem.Description, accountigItem.DateTitle.ToShamsiDate());
@@ -76,6 +76,29 @@ namespace Accounting.App
                     }
                 }
             }
+        }
+
+        private void btnEditAccountig_Click(object sender, EventArgs e)
+        {
+            if (dgvAccountingReport.CurrentRow!=null)
+            {
+                frmNewAccountig frmedit = new frmNewAccountig();
+                frmedit.accountigId = Convert.ToInt32(dgvAccountingReport.CurrentRow.Cells["ID"].Value);
+                
+                if (frmedit.ShowDialog()==DialogResult.OK)
+                {
+                    Filter();
+                }
+                else
+                {
+                    RtlMessageBox.Show("خطا در هنگام ثبت ویرایش لطفا بعدا مجددا انجام، یا با ادمین خود تماس حاصل فرمایئد.با تشکر", "عدم ثبت ویرایش");
+                }
+            }
+            else
+            {
+                RtlMessageBox.Show("لطفا یک تراکنش را از لیست برای ویرایش انتخاب نمائید.با تشکر", "عدم انتخاب تراکنش");
+            }
+           
         }
     }
 }

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Accountig.DataLayer.Repositories;
-using Accountig.DataLayer.Services;
-using Accountig.DataLayer.Context;
+using Accounting.DataLayer.Repositories;
+using Accounting.DataLayer.Services;
+using Accounting.DataLayer.Context;
 
 
-namespace Accountig.DataLayer.Context
+namespace Accounting.DataLayer.Context
 {
     public class UnitOfWorkPattern : IDisposable
     {
