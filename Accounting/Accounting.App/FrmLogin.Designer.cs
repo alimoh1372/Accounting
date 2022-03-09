@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.label1 = new System.Windows.Forms.Label();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
+            this.requiredFieldValidator1 = new ValidationComponents.RequiredFieldValidator(this.components);
+            this.requiredFieldValidator2 = new ValidationComponents.RequiredFieldValidator(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -47,7 +51,7 @@
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(30, 36);
+            this.txtUserName.Location = new System.Drawing.Point(13, 36);
             this.txtUserName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(275, 26);
@@ -55,7 +59,7 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(30, 81);
+            this.txtPassword.Location = new System.Drawing.Point(13, 81);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
@@ -74,12 +78,27 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(156, 120);
+            this.btnLogin.Location = new System.Drawing.Point(115, 120);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(81, 41);
+            this.btnLogin.Size = new System.Drawing.Size(173, 41);
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "ورود";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // requiredFieldValidator1
+            // 
+            this.requiredFieldValidator1.CancelFocusChangeWhenInvalid = false;
+            this.requiredFieldValidator1.ControlToValidate = this.txtUserName;
+            this.requiredFieldValidator1.ErrorMessage = "لطفا نام کاربری را وارد نمائید.";
+            this.requiredFieldValidator1.Icon = ((System.Drawing.Icon)(resources.GetObject("requiredFieldValidator1.Icon")));
+            // 
+            // requiredFieldValidator2
+            // 
+            this.requiredFieldValidator2.CancelFocusChangeWhenInvalid = false;
+            this.requiredFieldValidator2.ControlToValidate = this.txtPassword;
+            this.requiredFieldValidator2.ErrorMessage = "لطفا پسورد را وارد نمائید.";
+            this.requiredFieldValidator2.Icon = ((System.Drawing.Icon)(resources.GetObject("requiredFieldValidator2.Icon")));
             // 
             // FrmLogin
             // 
@@ -99,6 +118,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ورود به برنامه";
+            this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,5 +131,7 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnLogin;
+        private ValidationComponents.RequiredFieldValidator requiredFieldValidator1;
+        private ValidationComponents.RequiredFieldValidator requiredFieldValidator2;
     }
 }
