@@ -40,7 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainFormReportCalcuting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Accountig.DataLayer\Accounting.DataLayer.csproj">
+      <Project>{AE784DB9-9800-4E21-97F4-9905F0D03D00}</Project>
+      <Name>Accounting.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewModels\Accounting.ViewModels.csproj">
+      <Project>{b9f38f32-9c5e-4485-bb86-d5b062ccf72b}</Project>
+      <Name>Accounting.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

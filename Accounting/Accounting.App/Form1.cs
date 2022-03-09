@@ -1,4 +1,6 @@
-﻿using Accounting.Utility;
+﻿using Accounting.Business;
+using Accounting.Utility;
+using Accounting.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -48,22 +50,54 @@ namespace Accounting.App
         private void Form1_Load(object sender, EventArgs e)
         {
             this.Hide();
-            
-            
             FrmLogin frmLogin = new FrmLogin();
             if (frmLogin.ShowDialog()==DialogResult.OK)
             {
                 lblDate.Text = DateTime.Now.ToShamsiDate();
                 lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
                 timer1.Start();
-                 
+                var list = Enumerable.Range(1, 31).Cast<object>().ToArray();
+                cbDayReport.Items.AddRange(list);
+                cbDayReport.SelectedIndex = cbDayReport.Items.IndexOf(31);
+                cbDayReport.SelectedText = 31.ToString();
+                ReportDay(1);
+                ReportMonth();
+                ReportDate();
+
             }
             else
             {
                 Application.Exit();
             }
         }
+        void ReportDay(int days=31)
+        {
+            ReportMainFormViewModel rpViewModel = new ReportMainFormViewModel();
+            rpViewModel = MainFormReportCalcuting.CalcuteReport(days);
+            lblDayPayReport.Text = rpViewModel.Pay.ToString("#,0");
+            lblDayRecieveReport.Text = rpViewModel.Recieve.ToString("#,0");
+            lblDayBalanceReport.Text = rpViewModel.Balance.ToString("#,0");
+        }
+        void ReportMonth(int month=1)
+        {
+            DateTime startDateTime = DateTime.Now.AddMonths(-month);
+            DateTime endDateTime = DateTime.Now;
+            int numberOfdays = Convert.ToInt32((endDateTime - startDateTime).TotalDays);
+            ReportMainFormViewModel rpViewModel = new ReportMainFormViewModel();
+            rpViewModel = MainFormReportCalcuting.CalcuteReport(numberOfdays);
+            lblMonthsBalanceReport.Text = rpViewModel.Balance.ToString("#,0");
+            lblMonthsPayReport.Text = rpViewModel.Pay.ToString("#,0");
+            lblMonthsRecieveReport.Text = rpViewModel.Recieve.ToString("#,0");
+        }
+        void ReportDate(string startDate= "    /  /", string endDate= "    /  /")
+        {
+            ReportMainFormViewModel rpViewModel = new ReportMainFormViewModel();
+            if (startDate!= "    /  /")
+            {
 
+            }
+            string startDateTime = txtFromDate.Text;
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
             lblTime.Text = DateTime.Now.ToString("HH:mm:ss");

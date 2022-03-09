@@ -236,6 +236,10 @@
     <None Include="Resources\no-profile-image.gif" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Accounting.Business\Accounting.Business.csproj">
+      <Project>{96F05840-E70C-46F9-8341-3913A8890DC1}</Project>
+      <Name>Accounting.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ViewModels\Accounting.ViewModels.csproj">
       <Project>{B9F38F32-9C5E-4485-BB86-D5B062CCF72B}</Project>
       <Name>Accounting.ViewModels</Name>
