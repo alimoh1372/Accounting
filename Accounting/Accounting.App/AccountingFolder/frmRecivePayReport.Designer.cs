@@ -37,16 +37,17 @@
             this.cbCustomer = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnEditAccountig = new System.Windows.Forms.ToolStripButton();
+            this.btnDeleteAccountig = new System.Windows.Forms.ToolStripButton();
+            this.btnRefreshReport = new System.Windows.Forms.ToolStripButton();
+            this.btnPrint = new System.Windows.Forms.ToolStripButton();
             this.dgvAccountingReport = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CostomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEditAccountig = new System.Windows.Forms.ToolStripButton();
-            this.btnDeleteAccountig = new System.Windows.Forms.ToolStripButton();
-            this.btnRefreshReport = new System.Windows.Forms.ToolStripButton();
-            this.btnPrint = new System.Windows.Forms.ToolStripButton();
+            this.stiPrint = new Stimulsoft.Report.StiReport();
             this.groupBox1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccountingReport)).BeginInit();
@@ -70,7 +71,7 @@
             // 
             // btnFilter
             // 
-            this.btnFilter.Location = new System.Drawing.Point(28, 14);
+            this.btnFilter.Location = new System.Drawing.Point(8, 14);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(75, 55);
             this.btnFilter.TabIndex = 6;
@@ -80,12 +81,12 @@
             // 
             // txtToDate
             // 
-            this.txtToDate.Location = new System.Drawing.Point(109, 26);
+            this.txtToDate.Location = new System.Drawing.Point(89, 26);
             this.txtToDate.Mask = "0000/00/00";
             this.txtToDate.Name = "txtToDate";
             this.txtToDate.PromptChar = '-';
             this.txtToDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtToDate.Size = new System.Drawing.Size(73, 27);
+            this.txtToDate.Size = new System.Drawing.Size(93, 27);
             this.txtToDate.TabIndex = 5;
             this.txtToDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -100,12 +101,12 @@
             // 
             // txtFromDate
             // 
-            this.txtFromDate.Location = new System.Drawing.Point(262, 26);
+            this.txtFromDate.Location = new System.Drawing.Point(259, 26);
             this.txtFromDate.Mask = "0000/00/00";
             this.txtFromDate.Name = "txtFromDate";
             this.txtFromDate.PromptChar = '-';
             this.txtFromDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtFromDate.Size = new System.Drawing.Size(79, 27);
+            this.txtFromDate.Size = new System.Drawing.Size(82, 27);
             this.txtFromDate.TabIndex = 3;
             this.txtFromDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -148,6 +149,49 @@
             this.toolStrip1.Size = new System.Drawing.Size(717, 62);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btnEditAccountig
+            // 
+            this.btnEditAccountig.Image = global::Accounting.App.Properties.Resources._1371475930_filenew;
+            this.btnEditAccountig.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnEditAccountig.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEditAccountig.Name = "btnEditAccountig";
+            this.btnEditAccountig.Size = new System.Drawing.Size(46, 59);
+            this.btnEditAccountig.Text = " ویراش";
+            this.btnEditAccountig.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnEditAccountig.Click += new System.EventHandler(this.btnEditAccountig_Click);
+            // 
+            // btnDeleteAccountig
+            // 
+            this.btnDeleteAccountig.Image = global::Accounting.App.Properties.Resources._1371476007_Close_Box_Red;
+            this.btnDeleteAccountig.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnDeleteAccountig.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDeleteAccountig.Name = "btnDeleteAccountig";
+            this.btnDeleteAccountig.Size = new System.Drawing.Size(44, 59);
+            this.btnDeleteAccountig.Text = "حذف";
+            this.btnDeleteAccountig.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDeleteAccountig.Click += new System.EventHandler(this.btnDeleteAccountig_Click);
+            // 
+            // btnRefreshReport
+            // 
+            this.btnRefreshReport.Image = global::Accounting.App.Properties.Resources._1371476342_Refresh;
+            this.btnRefreshReport.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnRefreshReport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRefreshReport.Name = "btnRefreshReport";
+            this.btnRefreshReport.Size = new System.Drawing.Size(60, 59);
+            this.btnRefreshReport.Text = "بروزرسانی";
+            this.btnRefreshReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Image = global::Accounting.App.Properties.Resources._1371476276_Print;
+            this.btnPrint.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(44, 59);
+            this.btnPrint.Text = "چاپ";
+            this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // dgvAccountingReport
             // 
@@ -203,47 +247,26 @@
             this.DateTitle.Name = "DateTitle";
             this.DateTitle.ReadOnly = true;
             // 
-            // btnEditAccountig
+            // stiPrint
             // 
-            this.btnEditAccountig.Image = global::Accounting.App.Properties.Resources._1371475930_filenew;
-            this.btnEditAccountig.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnEditAccountig.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEditAccountig.Name = "btnEditAccountig";
-            this.btnEditAccountig.Size = new System.Drawing.Size(46, 59);
-            this.btnEditAccountig.Text = " ویراش";
-            this.btnEditAccountig.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnEditAccountig.Click += new System.EventHandler(this.btnEditAccountig_Click);
-            // 
-            // btnDeleteAccountig
-            // 
-            this.btnDeleteAccountig.Image = global::Accounting.App.Properties.Resources._1371476007_Close_Box_Red;
-            this.btnDeleteAccountig.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnDeleteAccountig.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDeleteAccountig.Name = "btnDeleteAccountig";
-            this.btnDeleteAccountig.Size = new System.Drawing.Size(44, 59);
-            this.btnDeleteAccountig.Text = "حذف";
-            this.btnDeleteAccountig.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnDeleteAccountig.Click += new System.EventHandler(this.btnDeleteAccountig_Click);
-            // 
-            // btnRefreshReport
-            // 
-            this.btnRefreshReport.Image = global::Accounting.App.Properties.Resources._1371476342_Refresh;
-            this.btnRefreshReport.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnRefreshReport.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnRefreshReport.Name = "btnRefreshReport";
-            this.btnRefreshReport.Size = new System.Drawing.Size(60, 59);
-            this.btnRefreshReport.Text = "بروزرسانی";
-            this.btnRefreshReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Image = global::Accounting.App.Properties.Resources._1371476276_Print;
-            this.btnPrint.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(44, 59);
-            this.btnPrint.Text = "چاپ";
-            this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.stiPrint.CookieContainer = null;
+            this.stiPrint.EngineVersion = Stimulsoft.Report.Engine.StiEngineVersion.EngineV2;
+            this.stiPrint.ReferencedAssemblies = new string[] {
+        "System.Dll",
+        "System.Drawing.Dll",
+        "System.Windows.Forms.Dll",
+        "System.Data.Dll",
+        "System.Xml.Dll",
+        "Stimulsoft.Controls.Dll",
+        "Stimulsoft.Base.Dll",
+        "Stimulsoft.Report.Dll"};
+            this.stiPrint.ReportAlias = "Report";
+            this.stiPrint.ReportGuid = "0d3d18969c88485c97c64b1063d61f3b";
+            this.stiPrint.ReportName = "Report";
+            this.stiPrint.ReportSource = null;
+            this.stiPrint.ReportUnit = Stimulsoft.Report.StiReportUnitType.Inches;
+            this.stiPrint.ScriptLanguage = Stimulsoft.Report.StiReportLanguageType.CSharp;
+            this.stiPrint.UseProgressInThread = false;
             // 
             // frmRecivePayReport
             // 
@@ -292,5 +315,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateTitle;
+        private Stimulsoft.Report.StiReport stiPrint;
     }
 }

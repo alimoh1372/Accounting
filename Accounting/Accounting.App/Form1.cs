@@ -43,5 +43,10 @@ namespace Accounting.App
             frmReport.TypeId = 2;
             frmReport.ShowDialog();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

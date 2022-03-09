@@ -33,15 +33,28 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Accountig.ViewModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ViewModels\bin\Debug\Accountig.ViewModels.dll</HintPath>
+    <Reference Include="Accounting.DataLayer">
+      <HintPath>..\Accountig.DataLayer\bin\Debug\Accounting.DataLayer.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework">
+    <Reference Include="Accounting.Utility">
+      <HintPath>..\Accounting.Utility\bin\Debug\Accounting.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Accountig.DataLayer\bin\Debug\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\Accountig.DataLayer\bin\Debug\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Base, Version=2014.3.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a" />
+    <Reference Include="Stimulsoft.Controls.Win, Version=2014.3.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Stimulsoft Reports.Ultimate 2014.3\Bin\Stimulsoft.Controls.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report, Version=2014.3.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL" />
+    <Reference Include="Stimulsoft.Report.Win, Version=2014.3.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Stimulsoft Reports.Ultimate 2014.3\Bin\Stimulsoft.Report.Win.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -85,6 +98,12 @@
     </Compile>
     <Compile Include="AccountingFolder\frmRecivePayReport.Designer.cs">
       <DependentUpon>frmRecivePayReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -132,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AccountingFolder\frmNewAccountig.resx">
       <DependentUpon>frmNewAccountig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -211,19 +233,14 @@
     <None Include="Resources\Users.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Accountig.DataLayer\Accounting.DataLayer.csproj">
-      <Project>{ae784db9-9800-4e21-97f4-9905f0d03d00}</Project>
-      <Name>Accounting.DataLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Accounting.Utility\Accounting.Utility.csproj">
-      <Project>{bcf386bb-0d1e-4881-a362-abf876267da1}</Project>
-      <Name>Accounting.Utility</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\no-profile-image.gif" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ViewModels\Accounting.ViewModels.csproj">
+      <Project>{B9F38F32-9C5E-4485-BB86-D5B062CCF72B}</Project>
+      <Name>Accounting.ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

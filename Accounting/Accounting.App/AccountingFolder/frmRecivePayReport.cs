@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Accounting.DataLayer;
 using Accounting.Utility;
 using Accounting.DataLayer.Context;
-using Accountig.ViewModels;
+using Accounting.ViewModels;
 
 namespace Accounting.App
 {
@@ -34,13 +34,13 @@ namespace Accounting.App
                 this.Text = "گزارش پرداختی ها";
                 Filter();
             }
-            using (UnitOfWorkPattern db=new UnitOfWorkPattern())
+            using (UnitOfWorkPattern db = new UnitOfWorkPattern())
             {
                 List<customerSelectViewModel> listCustomerName = new List<customerSelectViewModel>();
                 listCustomerName.Add(new customerSelectViewModel()
                 {
                     CustomerId = 0,
-                    FullName="لطفا انتخاب نمائید"
+                    FullName = "لطفا انتخاب نمائید"
                 }
                     );
                 listCustomerName.AddRange(db.customRepository.GetSelectCustomer());
@@ -48,8 +48,8 @@ namespace Accounting.App
                 cbCustomer.DisplayMember = "FullName";
                 cbCustomer.ValueMember = "CustomerId";
             }
-           
-            
+
+
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
@@ -60,16 +60,26 @@ namespace Accounting.App
         {
             using (UnitOfWorkPattern db = new UnitOfWorkPattern())
             {
-                var result = db.AccountigRepository.Get(a => a.TypeID == TypeId) ;
-                if (Convert.ToInt32(cbCustomer.SelectedValue)!=0)
+                var result = db.AccountigRepository.Get(a => a.TypeID == TypeId);
+                if (Convert.ToInt32(cbCustomer.SelectedValue) != 0)
                 {
                     result = result.Where(r => r.CostomerID == Convert.ToInt32(cbCustomer.SelectedValue));
                 }
-               
+                if (txtFromDate.Text != "    /  /")
+                {
+                    DateTime dt = txtFromDate.Text.ToMiladi();
+                    result = result.Where(r => r.DateTitle >= dt);
+                }
+                if (txtToDate.Text != "    /  /")
+                {
+                    DateTime dt = txtToDate.Text.ToMiladi();
+                    result = result.Where(r => r.DateTitle <= dt);
+                }
 
-                
+
                 // dgvAccountingReport.AutoGenerateColumns = false;
                 //dgvAccountingReport.DataSource = result;
+
                 dgvAccountingReport.Rows.Clear();
                 foreach (DataLayer.Accounting accountigItem in result)
                 {
@@ -90,23 +100,23 @@ namespace Accounting.App
                     int accountigId = Convert.ToInt32(dgvAccountingReport.CurrentRow.Cells["ID"].Value);
                     db.AccountigRepository.Delete(accountigId);
                     int result = db.Save();
-                    if (result>0)
+                    if (result > 0)
                     {
                         DialogResult = DialogResult.OK;
                     }
-                    
+
                 }
             }
         }
 
         private void btnEditAccountig_Click(object sender, EventArgs e)
         {
-            if (dgvAccountingReport.CurrentRow!=null)
+            if (dgvAccountingReport.CurrentRow != null)
             {
                 frmNewAccountig frmedit = new frmNewAccountig();
                 frmedit.accountigId = Convert.ToInt32(dgvAccountingReport.CurrentRow.Cells["ID"].Value);
-                
-                if (frmedit.ShowDialog()==DialogResult.OK)
+
+                if (frmedit.ShowDialog() == DialogResult.OK)
                 {
                     Filter();
                 }
@@ -119,7 +129,28 @@ namespace Accounting.App
             {
                 RtlMessageBox.Show("لطفا یک تراکنش را از لیست برای ویرایش انتخاب نمائید.با تشکر", "عدم انتخاب تراکنش");
             }
-           
+
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            DataTable dtPtint = new DataTable();
+            dtPtint.Columns.Add("Customer");
+            dtPtint.Columns.Add("Amount");
+            dtPtint.Columns.Add("Date");
+            dtPtint.Columns.Add("Description");
+            foreach (DataGridViewRow item in dgvAccountingReport.Rows)
+            {
+                dtPtint.Rows.Add(
+                    item.Cells[1].Value.ToString(),
+                    item.Cells[2].Value.ToString(),
+                    item.Cells[4].Value.ToString(),
+                    item.Cells[3].Value.ToString()
+                    );
+            }
+            stiPrint.Load(Application.StartupPath + "/Report.mrt");
+            stiPrint.RegData("DT", dtPtint); 
+            stiPrint.Show();
         }
     }
 }

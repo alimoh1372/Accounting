@@ -30,8 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Accountig.ViewModels">
-      <HintPath>..\ViewModels\bin\Debug\Accountig.ViewModels.dll</HintPath>
+    <Reference Include="Accounting.Utility">
+      <HintPath>..\Accounting.Utility\bin\Debug\Accounting.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="Accounting.ViewModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ViewModels\bin\Debug\Accounting.ViewModels.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -123,12 +127,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ViewModels\Accounting.ViewModels.csproj">
-      <Project>{B9F38F32-9C5E-4485-BB86-D5B062CCF72B}</Project>
-      <Name>Accounting.ViewModels</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

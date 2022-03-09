@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Accounting.DataLayer.Repositories;
 using System.Data.Entity;
-using Accountig.ViewModels;
+using Accounting.ViewModels;
 
 namespace Accounting.DataLayer.Services
 {
