@@ -63,7 +63,7 @@ namespace Accounting.DataLayer.Services
         {
            return db.Customers.First(c => c.FullName.Contains(fullName)).CustomerID;
         }
-
+         
         public string GetCustomerNameById(int customerId)
         {
             return db.Customers.Find(customerId).FullName;

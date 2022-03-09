@@ -21,7 +21,7 @@ namespace Accounting.App
 {
     public partial class frmNewAccountig : Form
     {
-        UnitOfWorkPattern db = new UnitOfWorkPattern();
+        UnitOfWorkPattern db ;
         public int accountigId = 0;
         public frmNewAccountig()
         {
@@ -30,6 +30,7 @@ namespace Accounting.App
 
         private void frmNewAccountig_Load(object sender, EventArgs e)
         {
+            db = new UnitOfWorkPattern();
             BindGridSelect();
             if (accountigId==0)
             {
@@ -42,10 +43,30 @@ namespace Accounting.App
                 this.btnSaveTransaction.Text = "ثبت ویرایش";
                 DataLayer.Accounting accounting1 = new DataLayer.Accounting();
                 accounting1 = db.AccountigRepository.GetById(accountigId);
-
-                
+                txtAmount.Text = accounting1.Amount.ToString();
+                txtCustomerName.Text = db.customRepository.GetCustomerNameById(accounting1.CostomerID);
+                txtDescrepcion.Text = accounting1.Description;
+                if (accounting1.TypeID==1)
+                {
+                    rdRecieve.Checked = true;
+                }
+                else
+                {
+                    rdPay.Checked = true;
+                }
+                dgvSelectCustomers.ClearSelection();
+                foreach (DataGridViewRow row in dgvSelectCustomers.Rows)
+                {
+                    if (row.Cells["FullName"].Value.ToString() == txtCustomerName.Text)
+                    {
+                        row.Selected = true;
+                        break;
+                    }
+                }
 
             }
+            db.Dispose();
+            
 
         }
 
@@ -67,6 +88,7 @@ namespace Accounting.App
 
         private void btnSaveTransaction_Click(object sender, EventArgs e)
         {
+            db = new UnitOfWorkPattern();
             
             if (BaseValidator.IsFormValid(this.components))
             {
@@ -87,6 +109,7 @@ namespace Accounting.App
                         db.AccountigRepository.Insert(accounting);
                         result = db.Save();
                         title = "خطا هنگام ثبت";
+                        
                     }
                     else
                     {
@@ -111,6 +134,7 @@ namespace Accounting.App
                     RtlMessageBox.Show("لطفا یکی از نوع تراکنش ها را انتخاب نمائید ", "انتخاب تراکنش", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+            db.Dispose();
         }
     }
 }

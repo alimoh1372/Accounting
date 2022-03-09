@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Accounting.DataLayer;
 using Accounting.Utility;
 using Accounting.DataLayer.Context;
+using Accountig.ViewModels;
 
 namespace Accounting.App
 {
@@ -33,6 +34,22 @@ namespace Accounting.App
                 this.Text = "گزارش پرداختی ها";
                 Filter();
             }
+            using (UnitOfWorkPattern db=new UnitOfWorkPattern())
+            {
+                List<customerSelectViewModel> listCustomerName = new List<customerSelectViewModel>();
+                listCustomerName.Add(new customerSelectViewModel()
+                {
+                    CustomerId = 0,
+                    FullName="لطفا انتخاب نمائید"
+                }
+                    );
+                listCustomerName.AddRange(db.customRepository.GetSelectCustomer());
+                cbCustomer.DataSource = listCustomerName;
+                cbCustomer.DisplayMember = "FullName";
+                cbCustomer.ValueMember = "CustomerId";
+            }
+           
+            
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
@@ -43,7 +60,14 @@ namespace Accounting.App
         {
             using (UnitOfWorkPattern db = new UnitOfWorkPattern())
             {
-                var result = db.AccountigRepository.Get(a => a.TypeID == TypeId);
+                var result = db.AccountigRepository.Get(a => a.TypeID == TypeId) ;
+                if (Convert.ToInt32(cbCustomer.SelectedValue)!=0)
+                {
+                    result = result.Where(r => r.CostomerID == Convert.ToInt32(cbCustomer.SelectedValue));
+                }
+               
+
+                
                 // dgvAccountingReport.AutoGenerateColumns = false;
                 //dgvAccountingReport.DataSource = result;
                 dgvAccountingReport.Rows.Clear();
@@ -70,10 +94,7 @@ namespace Accounting.App
                     {
                         DialogResult = DialogResult.OK;
                     }
-                    else
-                    {
-                        RtlMessageBox.Show("خطا در هنگام حذف از دیتابیش", "عدم حذف", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    
                 }
             }
         }
